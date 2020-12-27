@@ -71,6 +71,7 @@ function addTodo(event) {
     input.value = '';
     renderTodos(list, todos);
 }
+
 function updateTodo(event) {
     const id = +event.target.parentNode.dataset.id;
     const completed = event.target.checked;
@@ -79,6 +80,7 @@ function updateTodo(event) {
     });
     renderTodos(list, todos);
 }
+
 function editTodo(event) {
     if (event.target.nodeName.toLowerCase() !== 'span') {
         return;
@@ -105,11 +107,11 @@ function editTodo(event) {
             });
             renderTodos(list, todos);
         }
-        event.target.style.display = '';
         this.removeEventListener('change', handleEdit);
         this.remove();
     }
 }
+
 function deleteTodo(event) {
     if (event.target.type === 'button') {
         const id = +event.target.parentNode.dataset.id;
@@ -117,6 +119,7 @@ function deleteTodo(event) {
         renderTodos(list, todos);
     }
 }
+
 function clearCompleteTodos(event) {
     const count = todos.filter((todo) => todo.completed).length;
     if (count === 0) {
@@ -127,6 +130,7 @@ function clearCompleteTodos(event) {
         renderTodos(list, todos);
     }
 }
+
 function init() {
     renderTodos(list, todos);
     // add Todo
@@ -148,6 +152,7 @@ init();
 function create(array, item) {
     return [...array, item];
 }
+
 function update(array, id, body) {
     return array.map((todo, index) => {
         if (index === id) {
@@ -159,6 +164,7 @@ function update(array, id, body) {
         return todo;
     });
 }
+
 function remove(array, id) {
     return array.filter((todo, index) => {
         return index !== id;
